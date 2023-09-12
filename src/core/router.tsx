@@ -12,7 +12,7 @@ export const ROUTE_NAMES = {
 
 export const router = createBrowserRouter([
   {
-    path: ROUTE_NAMES.OVERVIEW,
+    path: '/',
     element: <OverviewPage />
   },
   {
