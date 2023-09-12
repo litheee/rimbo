@@ -30,9 +30,9 @@ export const AudienceDistribution = () => {
 
                 <Progress
                   items={[
-                    { width: femalePercent, bgColor: theme === Theme.LIGHT ? '#D4D7F4' : '#4854BF' },
-                    { width: malePercent, bgColor: 'linear-gradient(180deg, #58C4F1 0%, #4D83F8 100%)' },
-                    { width: unknownPercent, bgColor: 'linear-gradient(180deg, #C058F1 0%, #712893 100%)' }
+                    { width: femalePercent, bgColor: 'linear-gradient(180deg, #58C4F1 0%, #4D83F8 100%)' },
+                    { width: malePercent, bgColor: 'linear-gradient(180deg, #C058F1 0%, #712893 100%)' },
+                    { width: unknownPercent, bgColor: theme === Theme.LIGHT ? '#D4D7F4' : '#4854BF' }
                   ]}
                 />
 

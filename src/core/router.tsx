@@ -11,14 +11,8 @@ export const ROUTE_NAMES = {
 } as const
 
 export const router = createBrowserRouter([
-  // {
-  //   path: '/',
-  //   loader: () => {
-  //     return redirect(ROUTE_NAMES.OVERVIEW)
-  //   }
-  // },
   {
-    path: '/',
+    path: ROUTE_NAMES.OVERVIEW,
     element: <OverviewPage />
   },
   {

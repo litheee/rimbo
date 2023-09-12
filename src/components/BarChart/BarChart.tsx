@@ -12,7 +12,8 @@ import {
   ChartType,
   DefaultDataPoint,
   CartesianTickOptions as TickProps,
-  ChartOptions
+  ChartOptions,
+  ChartDataset
 } from 'chart.js'
 
 import { Box } from '..'
@@ -22,7 +23,14 @@ import { Theme } from 'providers/Theme/Context'
 
 import styles from './BarChart.module.scss'
 
+type Dataset = Partial<ChartDataset<ChartType, DefaultDataPoint<ChartType>>>
+
 ChartJS.register(LinearScale, CategoryScale, BarElement, PointElement, LineElement, LineController, BarController)
+
+const max = 120
+const min = 25
+
+const labels = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00']
 
 function generateRandomNumber(min: number, max: number) {
   min = Math.ceil(min)
@@ -30,89 +38,64 @@ function generateRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
+const generateRandomDataToBarDataset = () => {
+  return {
+    ...barBaseDataset,
+    data: labels.map(() => generateRandomNumber(min, max))
+  }
+}
+
+const barBaseDataset: Dataset = {
+  type: 'bar' as const,
+  backgroundColor: '#5DE5E8',
+  hoverBackgroundColor: '#5DE5E8',
+  categoryPercentage: 1,
+  barPercentage: 0.67,
+  order: 1
+}
+
+const barDatasets = new Array(11).fill(null).map(generateRandomDataToBarDataset)
+
 export const BarChart = () => {
-  // 3. only 4 ticks and grid borders for Y (0, 50, 100, 150)
-
   const { theme } = useTheme()
-
-  const max = 150
-  const min = 25
-
-  const labels = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00']
-
-  const barBaseDataset = {
-    type: 'bar' as const,
-    label: 'Dataset 1',
-    backgroundColor: '#5DE5E8',
-    hoverBackgroundColor: '#5DE5E8',
-    categoryPercentage: 1,
-    barPercentage: 0.67
-  }
-
-  const generateBarDataset = () => {
-    return {
-      ...barBaseDataset,
-      data: labels.map(() => generateRandomNumber(min, max))
-    }
-  }
-
-  const tickStyles: Partial<TickProps> = {
-    color: theme === Theme.LIGHT ? '#ABADB8' : 'rgba(255, 255, 255, 0.6)',
-    font: {
-      family: 'Inter',
-      size: 14,
-      weight: '300'
-    },
-    align: 'inner'
-  }
-
-  // const lineBaseDataset = {
-  //   type: 'line' as const,
-  //   label: 'Dataset 12',
-  //   borderColor: '#8F3BB7',
-  //   borderWidth: 2,
-  //   fill: false,
-  //   cubicInterpolationMode: 'monotone',
-  //   pointRadius: 0,
-  //   pointHoverRadius: 0
-  // }
-
-  const barDatasets = new Array(11).fill(null).map(generateBarDataset)
 
   const data: ChartData<ChartType, DefaultDataPoint<ChartType>, string> = {
     labels,
-    // xLabels,
-    // yLabels,
-
     datasets: [
       {
         type: 'line' as const,
-        label: 'Dataset 1',
+        data: [75, 100, 129, 75, 100, 140, 80, 130],
         borderColor: '#8F3BB7',
         borderWidth: 2,
         fill: false,
-        data: [75, 100, 129, 75, 100, 140, 80, 130, 80, 0, 0],
         cubicInterpolationMode: 'monotone',
         pointRadius: 0,
-        pointHoverRadius: 0
+        pointHoverRadius: 0,
+        order: 0
       },
       ...barDatasets
     ]
   }
 
+  const tickStyles: Partial<TickProps> = {
+    color: theme === Theme.LIGHT ? '#ABADB8' : 'rgba(255, 255, 255, 0.6)',
+    align: 'inner',
+    font: {
+      family: 'Inter',
+      size: 14,
+      weight: '300'
+    }
+  }
+
   const chartOptions: ChartOptions = {
     responsive: true,
-    aspectRatio: 1262 / 199,
+    aspectRatio: 1262 / 195,
     scales: {
       y: {
         ticks: {
           ...tickStyles,
           padding: 8,
-          callback(tickValue, index, ticks) {
-            // [0, 50, 100, 150]
-            console.log(tickValue, index, ticks)
-            return index % 4 === 0 ? tickValue : null
-          }
+          stepSize: 50
         },
         border: {
           display: false
@@ -145,6 +128,18 @@ export const BarChart = () => {
     <section className={styles['bar-chart']}>
       <div className='wrapper'>
         <Box>
+          <ul className={styles['values-list']}>
+            <li className={styles['values-list-item']}>
+              <span className={styles['values-list-circle']} />
+              <span>Value 1 (1)</span>
+            </li>
+
+            <li className={styles['values-list-item']}>
+              <span className={styles['values-list-circle']} />
+              <span>Value 2 (2)</span>
+            </li>
+          </ul>
+
           <div className={styles.chart}>
             <Chart type='bar' data={data} options={chartOptions} />
           </div>

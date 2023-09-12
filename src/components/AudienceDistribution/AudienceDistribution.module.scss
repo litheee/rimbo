@@ -42,15 +42,15 @@
     gap: 10px;
 
     &:nth-of-type(1) .legend-list-circle {
-      background: #4854bf;
-    }
-
-    &:nth-of-type(2) .legend-list-circle {
       background: linear-gradient(180deg, #58c4f1 0%, #4d83f8 100%);
     }
 
-    &:nth-of-type(3) .legend-list-circle {
+    &:nth-of-type(2) .legend-list-circle {
       background: linear-gradient(180deg, #c058f1 0%, #712893 100%);
+    }
+
+    &:nth-of-type(3) .legend-list-circle {
+      background: var(--audience-unknown-color);
     }
   }
 
