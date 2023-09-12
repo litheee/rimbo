@@ -1,0 +1,25 @@
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+body {
+  padding-bottom: 50px;
+  background: var(--main-bg-color);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-size-reg);
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--primary-color);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1296px;
+  width: 100%;
+  // padding: 0 20px;
+  margin: 0 auto;
+  // box-sizing: border-box;
+}

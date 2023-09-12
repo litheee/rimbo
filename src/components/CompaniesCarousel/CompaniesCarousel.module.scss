@@ -1,0 +1,35 @@
+.companies-carousel-container {
+  position: relative;
+  width: 100%;
+
+  .prev-btn,
+  .next-btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 10;
+  }
+
+  .prev-btn {
+    left: -15px;
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  .next-btn {
+    right: -15px;
+  }
+}
+
+.companies-carousel {
+  width: 100%;
+  margin-top: 24px;
+}

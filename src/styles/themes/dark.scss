@@ -1,0 +1,32 @@
+body.dark {
+  --primary-color: #e6f3f2;
+
+  --main-bg-color: #141838;
+  --header-bg-color: #141838;
+  --header-nav-item-active-color: #4db4ff;
+
+  --theme-switcher-bg-color: #191e44;
+  --theme-switcher-item-active-bg-color: #4854bf;
+  --theme-switcher-track-box-shadow: none;
+
+  --companies-bg-color: #0a071c;
+  --companies-light-width: 1578px;
+  --companies-light-height: 473px;
+  --companies-light-blur: 110px;
+  --companies-light-opacity: 0.2;
+
+  --hover-bg-color: rgba(255, 255, 255, 0.05);
+  --dropdown-bg-color: #313c82;
+  --dropdown-item-hover-bg-color: rgba(72, 84, 191, 0.25);
+
+  --company-card-bg-color: #191e44;
+  --company-card-border-color: #3c54ba;
+
+  --box-bg-color: #191e44;
+  --box-border-color: #252c65;
+
+  --devices-unknown-color: #5fede7;
+  --legend-text-color: rgba(230, 243, 242, 0.4);
+
+  --progress-bg-color: #34385a;
+}

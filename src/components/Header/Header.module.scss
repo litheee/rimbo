@@ -1,0 +1,55 @@
+.header {
+  height: 70px;
+  background-color: var(--header-bg-color);
+
+  :global {
+    .wrapper {
+      height: 100%;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  nav {
+    margin: 0 auto;
+
+    &,
+    ul,
+    li,
+    a {
+      height: 100%;
+    }
+
+    ul {
+      display: flex;
+      gap: 32px;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: var(--font-size-md);
+        color: var(--primary-color);
+        border-bottom: 2px solid transparent;
+
+        &.active {
+          border-color: var(--header-nav-item-active-color);
+
+          svg {
+            fill: var(--header-nav-item-active-color);
+          }
+        }
+
+        svg {
+          fill: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
