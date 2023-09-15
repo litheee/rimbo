@@ -11,10 +11,18 @@ import { LangSwitcher } from './LangSwitcher/LangSwitcher'
 import { CompaniesCarousel } from './CompaniesCarousel/CompaniesCarousel'
 import { AudienceCharts } from './AudienceCharts/AudienceCharts'
 import { BarChart } from './BarChart/BarChart'
-import { AdvertisementChart } from './AdvertisementChart/AdvertisementChart'
+import { AdvertismentChart } from './AdvertismentChart/AdvertismentChart'
 import { DevicesDistrubution } from './DevicesDistrubution/DevicesDistrubution'
 import { TopCitiesDistribution } from './TopCitiesDistribution/TopCitiesDistribution'
 import { AudienceDistribution } from './AudienceDistribution/AudienceDistribution'
+import { AdvertismentType } from './AdvertismentType/AdvertismentType'
+import { AdvertismentTypesCarousel } from './AdvertismentTypesCarousel/AdvertismentTypesCarousel'
+import { GrowthChart } from './GrowthChart/GrowthChart'
+import { TrafficTable } from './TrafficTable/TrafficTable'
+import { CompaniesTables } from './CompaniesTables/CompaniesTables'
+import { WhiteListTable } from './WhiteListTable/WhiteListTable'
+import { TargetingTable } from './TargetingTable/TargetingTable'
+import { HeaderAuth } from './HeaderAuth/HeaderAuth'
 
 export {
   App,
@@ -30,8 +38,16 @@ export {
   CompaniesCarousel,
   AudienceCharts,
   BarChart,
-  AdvertisementChart,
+  AdvertismentChart,
   DevicesDistrubution,
   TopCitiesDistribution,
-  AudienceDistribution
+  AudienceDistribution,
+  AdvertismentType,
+  GrowthChart,
+  AdvertismentTypesCarousel,
+  TrafficTable,
+  CompaniesTables,
+  WhiteListTable,
+  TargetingTable,
+  HeaderAuth
 }

@@ -92,6 +92,7 @@ export const CompaniesCarousel = () => {
       <Swiper
         spaceBetween={24}
         slidesPerView={4}
+        allowTouchMove={false}
         modules={[Navigation]}
         className={styles['companies-carousel']}
         onBeforeInit={(swiper) => {

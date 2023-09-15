@@ -1,11 +1,12 @@
-import { AdvertisementChart, AudienceCharts, BarChart, Companies, Header } from 'components'
+import { AdvertismentChart, AudienceCharts, BarChart, Companies, Header, TrafficTable } from 'components'
 
 export const OverviewPage = () => {
   return (
     <>
       <Header />
       <Companies title='Overview' />
-      <AdvertisementChart />
+      <TrafficTable />
+      <AdvertismentChart />
       <BarChart />
       <AudienceCharts />
     </>

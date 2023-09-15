@@ -33,4 +33,26 @@ body.dark {
   --chart-value-color: rgba(255, 255, 255, 0.6);
 
   --audience-unknown-color: #4854bf;
+
+  --checkbox-bg-color: #242b62;
+  --checkbox-border-color: #354092;
+  --checkbox-checkmark-color: #fff;
+
+  --advertisment-type-bg-color: #1e2451;
+
+  --advertisment-chart-labels-color: rgba(255, 255, 255, 0.6);
+
+  --button-bg-color: #1e2451;
+  --button-border-color: #2c357a;
+  --button-icon-color: #fff;
+
+  --table-row-bg-color: rgba(255, 255, 255, 0.05);
+  --table-border-color: rgba(234, 234, 237, 0.1);
+  --table-overflow-overlay-bg-color: linear-gradient(270deg, #191e44 35.92%, rgba(25, 30, 68, 0) 100%);
+
+  --scrollbar-color: #25294e;
+  --scrollbar-border-color: #191e44;
+
+  --pagination-button-active-bg-color: rgba(255, 255, 255, 0.05);
+  --pagination-arrow-color: #fff;
 }

@@ -89,7 +89,7 @@ export const BarChart = () => {
 
   const chartOptions: ChartOptions = {
     responsive: true,
-    aspectRatio: 1262 / 195,
+    aspectRatio: 1296 / 195,
     scales: {
       y: {
         ticks: {

@@ -1,0 +1,34 @@
+.advertisment-chart {
+  margin-top: 16px;
+
+  :global {
+    .box {
+      position: relative;
+      padding-bottom: 334px;
+      background-image: url('../../assets/img/dots-line.svg');
+      background-size: 100% 35px;
+      background-repeat: repeat-y;
+      background-position: 0 17px;
+    }
+  }
+}
+
+.chart {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1296px;
+  height: 310px;
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 17px;
+
+  li {
+    line-height: 17px;
+    font-weight: 300;
+    color: var(--advertisment-chart-labels-color);
+  }
+}

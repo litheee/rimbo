@@ -1,0 +1,33 @@
+.companies-tables {
+  position: relative;
+
+  :global {
+    .box {
+      padding: 24px;
+    }
+  }
+}
+
+.top-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  margin-top: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--button-border-color);
+  background: var(--button-bg-color);
+
+  svg path {
+    stroke: var(--button-icon-color);
+  }
+}
