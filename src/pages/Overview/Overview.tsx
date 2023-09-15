@@ -2,13 +2,13 @@ import { AdvertismentChart, AudienceCharts, BarChart, Companies, Header, Traffic
 
 export const OverviewPage = () => {
   return (
-    <>
+    <div style={{ paddingBottom: 50 }}>
       <Header />
       <Companies title='Overview' />
       <TrafficTable />
       <AdvertismentChart />
       <BarChart />
       <AudienceCharts />
-    </>
+    </div>
   )
 }
