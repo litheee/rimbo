@@ -33,7 +33,7 @@ export const LogInPage = () => {
         </div>
       </div>
 
-      <div className='light' />
+      <div className='lightning' />
     </div>
   )
 }

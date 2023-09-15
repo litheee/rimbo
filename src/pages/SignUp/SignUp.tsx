@@ -34,7 +34,7 @@ export const SignUpPage = () => {
         </div>
       </div>
 
-      <div className='light' />
+      <div className='lightning' />
     </div>
   )
 }

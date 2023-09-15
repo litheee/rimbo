@@ -23,7 +23,7 @@ export const PasswordRecoveryInfoSentPage = () => {
         </div>
       </div>
 
-      <div className='light' />
+      <div className='lightning' />
     </div>
   )
 }
