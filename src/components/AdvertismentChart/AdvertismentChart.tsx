@@ -1,5 +1,5 @@
 import { Line } from 'react-chartjs-2'
-import type { ChartData, ChartArea, ChartOptions, ScriptableTooltipContext } from 'chart.js'
+import type { ChartData, ChartArea, ChartOptions, ScriptableTooltipContext, Point } from 'chart.js'
 import { Chart as ChartJS, Filler, LineElement, Tooltip } from 'chart.js'
 
 import { AdvertismentTypesCarousel, Box } from '..'
@@ -58,8 +58,10 @@ export const AdvertismentChart = () => {
     }
   ]
 
-  const createTooltip = (chart: any) => {
-    let tooltipEl = chart.canvas.parentNode.querySelector('div')
+  const createTooltip = (chart: ChartJS<'line', (number | Point | null)[], unknown>) => {
+    if (!chart || !chart.canvas || !chart.canvas.parentNode) return
+
+    let tooltipEl = chart.canvas.parentNode.querySelector('div') || null
 
     if (!tooltipEl) {
       tooltipEl = document.createElement('div')
@@ -67,7 +69,7 @@ export const AdvertismentChart = () => {
       tooltipEl.style.borderRadius = '8px'
       tooltipEl.style.padding = '24px'
       tooltipEl.style.color = '#2E324E'
-      tooltipEl.style.opacity = 1
+      tooltipEl.style.opacity = '1'
       tooltipEl.style.pointerEvents = 'none'
       tooltipEl.style.position = 'absolute'
       tooltipEl.style.transform = 'translate(-50%, calc(-100% - 34px))'
@@ -115,10 +117,11 @@ export const AdvertismentChart = () => {
     const { chart, tooltip } = context
 
     const tooltipEl = createTooltip(chart)
+    if (!tooltipEl) return
 
     // Hide if no tooltip
-    if (tooltip.opacity === 0) {
-      tooltipEl.style.opacity = 0
+    if (tooltipEl && tooltip.opacity === 0) {
+      tooltipEl.style.opacity = '0'
       return
     }
 
@@ -198,6 +201,8 @@ export const AdvertismentChart = () => {
 
       const root = tooltipEl.querySelector('table')
 
+      if (!root) return
+
       // Remove old children
       while (root.firstChild) {
         root.firstChild.remove()
@@ -211,10 +216,10 @@ export const AdvertismentChart = () => {
     const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas
 
     // Display, position, and set styles for font
-    tooltipEl.style.opacity = 1
+    tooltipEl.style.opacity = '1'
     tooltipEl.style.left = positionX + tooltip.caretX + 'px'
     tooltipEl.style.top = positionY + tooltip.caretY + 'px'
-    tooltipEl.style.font = tooltip.options.bodyFont.string
+    // tooltipEl.style.font = tooltip.options.bodyFont.string
     tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px'
   }
 
