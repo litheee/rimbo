@@ -54,6 +54,11 @@ export const GrowthChart = ({ value }: GrowthChartProps) => {
 
   const chartOptions: ChartOptions<'line'> = {
     aspectRatio: 120 / 36,
+    plugins: {
+      tooltip: {
+        enabled: false
+      }
+    },
     scales: {
       x: {
         border: {

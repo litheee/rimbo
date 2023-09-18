@@ -66,5 +66,3 @@ export const UserProfile = () => {
     </div>
   )
 }
-
-// #313C82 - dark

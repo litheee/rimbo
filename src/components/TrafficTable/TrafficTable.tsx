@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import Popup from 'reactjs-popup'
 
 import { Box, Heading } from '..'
+import { Checkbox, DatePicker } from 'ui'
 
 import styles from './TrafficTable.module.scss'
 
 import { ReactComponent as SortIcon } from 'assets/icons/sort.svg'
-import { ReactComponent as CalendarIcon } from 'assets/icons/calendar.svg'
 import { ReactComponent as ColumnsIcon } from 'assets/icons/columns.svg'
 import { ReactComponent as ArrowDownIcon } from 'assets/icons/arrow-down.svg'
+import { ReactComponent as DragIcon } from 'assets/icons/drag.svg'
 
 interface DataItem {
   id: number
@@ -36,6 +39,8 @@ interface DataItem {
 }
 
 export const TrafficTable = () => {
+  const [isColumnsPopupOpen, setColumnsPopupOpen] = useState(false)
+
   const data: DataItem[] = [
     {
       id: 121324555,
@@ -239,6 +244,8 @@ export const TrafficTable = () => {
     }
   ]
 
+  const columnsNames = Object.keys(data[0])
+
   const columnHelper = createColumnHelper<DataItem>()
 
   const columns = [
@@ -320,14 +327,47 @@ export const TrafficTable = () => {
 
         <Box>
           <div className={styles['top-line']}>
-            <button className={styles.button}>
-              <CalendarIcon /> 2023-08-08
-            </button>
+            <DatePicker />
 
             <div className={styles['top-line-right']}>
-              <button className={styles.button}>
-                Columns <ColumnsIcon />
-              </button>
+              <Popup
+                open={isColumnsPopupOpen}
+                position='bottom right'
+                arrow={false}
+                offsetY={0}
+                offsetX={0}
+                onOpen={() => {
+                  setColumnsPopupOpen(true)
+                }}
+                onClose={() => {
+                  setColumnsPopupOpen(false)
+                }}
+                trigger={
+                  <button className={`${styles.button} ${isColumnsPopupOpen ? styles['button-columns-active'] : ''}`}>
+                    Columns <ColumnsIcon />
+                  </button>
+                }
+              >
+                <div className={styles['columns-dropdown']}>
+                  <form>
+                    <ul>
+                      {columnsNames.map((name) => {
+                        return (
+                          <li key={name}>
+                            <Checkbox name={name} />
+
+                            <span>{name}</span>
+
+                            <button type='button'>
+                              <DragIcon />
+                            </button>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </form>
+                </div>
+              </Popup>
 
               <button className={styles.button}>
                 Export <ArrowDownIcon />

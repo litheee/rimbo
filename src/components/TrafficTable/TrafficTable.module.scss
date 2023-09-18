@@ -25,10 +25,6 @@
   align-items: center;
   justify-content: space-between;
 
-  & > button svg path {
-    stroke: var(--button-icon-color);
-  }
-
   &-right {
     display: flex;
     gap: 8px;
@@ -53,6 +49,85 @@
   border-radius: 8px;
   border: 1px solid var(--button-border-color);
   background: var(--button-bg-color);
+
+  &-columns-active {
+    background: var(--columns-dropdown-active-bg-color);
+    border: 1px solid var(--columns-dropdown-active-border-color);
+  }
+}
+
+.columns-dropdown {
+  width: 246px;
+  max-height: 599px;
+  margin-top: 8px;
+  padding: 8px 0 8px 8px;
+  border-radius: 8px;
+  background: var(--dropdown-bg-color);
+  box-shadow:
+    0px 0px 40px -8px rgba(0, 0, 0, 0.06),
+    0px 32px 48px -8px rgba(0, 0, 0, 0.04);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-top: 8px solid var(--columns-dropdown-scroll-border-color);
+    border-bottom: 8px solid var(--columns-dropdown-scroll-border-color);
+    border-right: 8px solid var(--columns-dropdown-scroll-border-color);
+    background-clip: padding-box;
+    background: var(--columns-dropdown-scroll-color);
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 10px;
+    gap: 8px;
+    background: transparent;
+    border-radius: 8px;
+    color: var(--primary-color);
+    transition: 0.3s;
+
+    &:hover {
+      background: var(--dropdown-item-hover-bg-color);
+
+      button {
+        background: var(--columns-dropdown-drag-hover-bg-color);
+      }
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      margin-left: auto;
+      border-radius: 8px;
+      background: var(--columns-dropdown-drag-bg-color);
+
+      svg {
+        fill: var(--primary-color);
+      }
+    }
+  }
+}
+
+.checkbox {
 }
 
 .table-container {

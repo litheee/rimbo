@@ -55,4 +55,16 @@ body.dark {
 
   --pagination-button-active-bg-color: rgba(255, 255, 255, 0.05);
   --pagination-arrow-color: #fff;
+
+  --calendar-bg-color: #141838;
+  --calendar-color: rgba(230, 243, 242, 0.5);
+  --calendar-top-line-bg-color: #223066;
+  --calendar-nav-button-url: '../../assets/icons/arrow-down.svg';
+
+  --columns-dropdown-active-bg-color: linear-gradient(0deg, #313c82 0%, #313c82 100%), rgba(255, 255, 255, 0.2);
+  --columns-dropdown-active-border-color: rgba(75, 118, 219, 0.4);
+  --columns-dropdown-scroll-color: rgba(255, 255, 255, 0.05);
+  --columns-dropdown-scroll-border-color: #313c82;
+  --columns-dropdown-drag-bg-color: rgba(255, 255, 255, 0.05);
+  --columns-dropdown-drag-hover-bg-color: rgba(255, 255, 255, 0.05);
 }

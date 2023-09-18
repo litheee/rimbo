@@ -16,7 +16,7 @@ export const AdvertismentType = ({ heading, value, growth }: AdvertismentTypePro
         <div className={styles.top}>
           <span className={styles['top-circle']} />
           <Heading variant='h3'>{heading}</Heading>
-          <Checkbox />
+          <Checkbox name={heading} />
         </div>
 
         <Heading variant='h2'>{value} %</Heading>
