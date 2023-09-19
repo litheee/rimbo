@@ -51,9 +51,9 @@ export const UserProfile = () => {
               <Link to='#'>Profile</Link>
             </li>
 
-            <li className={styles['menu-item']}>
+            {/* <li className={styles['menu-item']}>
               <Link to='#'>Settings</Link>
-            </li>
+            </li> */}
 
             <li className={styles['menu-item']}>
               <button type='button'>

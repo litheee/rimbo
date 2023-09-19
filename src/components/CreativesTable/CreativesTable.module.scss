@@ -14,17 +14,17 @@
 
       tr {
         th {
-          padding: 10px 0 26px;
+          padding: 10px 8px 26px 10px;
           color: #abadb8;
           font-weight: 300;
-          text-align: left;
+          text-align: center;
 
           span {
             padding-left: 4px;
           }
 
           &:nth-of-type(1) {
-            min-width: 124px;
+            min-width: 120px;
           }
 
           &:nth-of-type(2) {
@@ -44,22 +44,26 @@
           }
 
           &:nth-of-type(6) {
-            min-width: 94px;
+            min-width: 88px;
           }
 
           &:nth-of-type(7) {
-            min-width: 146px;
+            min-width: 85px;
           }
 
           &:nth-of-type(8) {
-            min-width: 166px;
+            min-width: 146px;
           }
 
           &:nth-of-type(9) {
-            min-width: 150px;
+            min-width: 166px;
           }
 
           &:nth-of-type(10) {
+            min-width: 150px;
+          }
+
+          &:nth-of-type(11) {
             min-width: 120px;
           }
         }
@@ -84,6 +88,8 @@
         }
 
         td {
+          text-align: center;
+          padding-right: 8px;
           border-bottom: 16px solid transparent;
           line-height: 50px;
 

@@ -12,6 +12,7 @@ interface DataItem {
   approved: string
   size: string
   impressions: string
+  clicks: string
   ctr: string
   videoFirstQuartile: string
   videoSecondQuartile: string
@@ -27,6 +28,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -39,6 +41,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -51,6 +54,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -63,6 +67,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -75,6 +80,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -87,6 +93,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -99,6 +106,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -111,6 +119,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -123,6 +132,7 @@ export const CreativesTable = () => {
       approved: 'Approved',
       size: '250x250',
       impressions: '0.032',
+      clicks: '1,566',
       ctr: '0.032',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
@@ -130,6 +140,7 @@ export const CreativesTable = () => {
       videoComplete: '48.281'
     }
   ]
+
   const columnHelper = createColumnHelper<DataItem>()
 
   const columns = [
@@ -148,7 +159,9 @@ export const CreativesTable = () => {
     columnHelper.accessor('impressions', {
       header: 'impressions'
     }),
-
+    columnHelper.accessor('clicks', {
+      header: 'clicks'
+    }),
     columnHelper.accessor('ctr', {
       header: 'ctr'
     }),
