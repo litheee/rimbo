@@ -90,6 +90,11 @@ export const BarChart = () => {
   const chartOptions: ChartOptions = {
     responsive: true,
     aspectRatio: 1296 / 195,
+    plugins: {
+      tooltip: {
+        enabled: false
+      }
+    },
     scales: {
       y: {
         ticks: {

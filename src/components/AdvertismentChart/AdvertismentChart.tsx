@@ -58,7 +58,7 @@ export const AdvertismentChart = () => {
     }
   ]
 
-  const createTooltip = (chart: ChartJS<'line', (number | Point | null)[], unknown>) => {
+  const createTooltip = (chart: ChartJS<'line', (number | Point | null)[], unknown>, theme: Theme) => {
     if (!chart || !chart.canvas || !chart.canvas.parentNode) return
 
     let tooltipEl = chart.canvas.parentNode.querySelector('div') || null
@@ -78,6 +78,7 @@ export const AdvertismentChart = () => {
       tooltipEl.style.width = '237px'
       tooltipEl.style.boxSizing = 'border-box'
       tooltipEl.style.fontFamily = 'Inter'
+      tooltipEl.style.boxShadow = '0px 0px 40px -8px rgba(0, 0, 0, 0.06), 0px 32px 48px -8px rgba(0, 0, 0, 0.04)'
 
       const container = document.createElement('table')
       container.style.position = 'relative'
@@ -107,16 +108,25 @@ export const AdvertismentChart = () => {
       tooltipEl.appendChild(triangleContainer)
       tooltipEl.appendChild(container)
       chart.canvas.parentNode.appendChild(tooltipEl)
+    } else {
+      const triangleContainer = tooltipEl.querySelector('div') as HTMLDivElement
+      const triangle = triangleContainer.querySelector('div') as HTMLDivElement
+
+      if (triangle) {
+        triangle.style.borderTop = theme === Theme.LIGHT ? '12px solid #fff' : '12px solid #313C82'
+      }
+
+      tooltipEl.style.background = theme === Theme.LIGHT ? '#fff' : '#313C82'
     }
 
     return tooltipEl
   }
 
-  const externalTooltipHandler = (context: ScriptableTooltipContext<'line'>) => {
+  const externalTooltipHandler = (context: ScriptableTooltipContext<'line'>, theme: Theme) => {
     // Tooltip Element
     const { chart, tooltip } = context
 
-    const tooltipEl = createTooltip(chart)
+    const tooltipEl = createTooltip(chart, theme)
     if (!tooltipEl) return
 
     // Hide if no tooltip
@@ -133,10 +143,12 @@ export const AdvertismentChart = () => {
 
       // TITLE START
       const row = document.createElement('tr')
+      // row.style.color = theme === Theme.LIGHT ? 'green' : 'red'
+      row.style.color = theme === Theme.LIGHT ? '#2E324E' : '#e6f3f2'
+
       const title = document.createElement('th')
 
       title.style.fontFamily = 'Inter'
-      title.style.color = theme === Theme.LIGHT ? '#2E324E' : '#e6f3f2'
       title.style.fontSize = '20px'
       title.style.lineHeight = '24px'
       title.style.fontWeight = '400'
@@ -219,7 +231,6 @@ export const AdvertismentChart = () => {
     tooltipEl.style.opacity = '1'
     tooltipEl.style.left = positionX + tooltip.caretX + 'px'
     tooltipEl.style.top = positionY + tooltip.caretY + 'px'
-    // tooltipEl.style.font = tooltip.options.bodyFont.string
     tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px'
   }
 
@@ -277,13 +288,51 @@ export const AdvertismentChart = () => {
     ]
   }
 
-  const chartOptions: ChartOptions<'line'> = {
+  const chartOptionsDark: ChartOptions<'line'> = {
     aspectRatio: 1296 / 310,
     plugins: {
       tooltip: {
         enabled: false,
         padding: 24,
-        external: externalTooltipHandler
+        external: (context) => externalTooltipHandler(context as ScriptableTooltipContext<'line'>, Theme.DARK)
+      }
+    },
+    scales: {
+      x: {
+        border: {
+          display: false
+        },
+        grid: {
+          offset: false,
+          display: false,
+          drawTicks: false
+        },
+        ticks: {
+          display: false
+        }
+      },
+      y: {
+        border: {
+          display: false
+        },
+        grid: {
+          display: false,
+          drawTicks: false
+        },
+        ticks: {
+          display: false
+        }
+      }
+    }
+  }
+
+  const chartOptionsLight: ChartOptions<'line'> = {
+    aspectRatio: 1296 / 310,
+    plugins: {
+      tooltip: {
+        enabled: false,
+        padding: 24,
+        external: (context) => externalTooltipHandler(context as ScriptableTooltipContext<'line'>, Theme.LIGHT)
       }
     },
     scales: {
@@ -332,28 +381,34 @@ export const AdvertismentChart = () => {
   return (
     <section className={styles['advertisment-chart']}>
       <div className='wrapper'>
-        <Box>
-          <AdvertismentTypesCarousel />
+        <div className={styles['scroll-container']}>
+          <Box>
+            <AdvertismentTypesCarousel />
 
-          <div className={styles.chart}>
-            <Line data={data} options={chartOptions} />
-          </div>
-        </Box>
+            <div className={styles.chart}>
+              {theme === Theme.LIGHT ? (
+                <Line data={data} options={chartOptionsLight} />
+              ) : (
+                <Line data={data} options={chartOptionsDark} />
+              )}
+            </div>
+          </Box>
 
-        <ul className={styles['chart-labels']}>
-          {generateLabels()
-            .filter((value, idx) => value % 5 === 0 || idx === 0)
-            .map((value) => {
-              const currentDate = new Date()
-              const monthLabel = currentDate.toDateString().slice(4, 8)
+          <ul className={styles['chart-labels']}>
+            {generateLabels()
+              .filter((value, idx) => value % 5 === 0 || idx === 0)
+              .map((value) => {
+                const currentDate = new Date()
+                const monthLabel = currentDate.toDateString().slice(4, 8)
 
-              return (
-                <li key={value}>
-                  {value} {monthLabel}
-                </li>
-              )
-            })}
-        </ul>
+                return (
+                  <li key={value}>
+                    {value} {monthLabel}
+                  </li>
+                )
+              })}
+          </ul>
+        </div>
       </div>
     </section>
   )

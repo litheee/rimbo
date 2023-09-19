@@ -19,7 +19,7 @@ export const CheckEmailPage = () => {
 
           <Heading variant='h1'>Check your email</Heading>
 
-          <p className='subtitle' style={{ width: 405 }}>
+          <p className='subtitle' style={{ maxWidth: 405 }}>
             We emailed you a confirmation link to <span>your_email@gmail.com</span> which you'll have to click to start
             using RIMBO
           </p>

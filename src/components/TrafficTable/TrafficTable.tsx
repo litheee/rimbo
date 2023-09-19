@@ -26,16 +26,10 @@ interface DataItem {
   coverage: string
   frequency: string
   viewbillity: string
-  impression: string
-  click: string
-  ct: string
-  cr: string
-  cv: string
-  cc: string
-  spen: string
-  coverag: string
-  frequenc: string
-  viewbillit: string
+  videoFirstQuartile: string
+  videoSecondQuartile: string
+  videoThirdQuartile: string
+  videoComplete: string
 }
 
 export const TrafficTable = () => {
@@ -56,16 +50,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     },
     {
       id: 121324556,
@@ -81,16 +69,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     },
     {
       id: 121324557,
@@ -106,16 +88,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     },
     {
       id: 121324558,
@@ -131,16 +107,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     },
     {
       id: 121324559,
@@ -156,16 +126,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     },
     {
       id: 121324560,
@@ -181,16 +145,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     },
     {
       id: 121324561,
@@ -206,16 +164,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     },
     {
       id: 121324562,
@@ -231,16 +183,10 @@ export const TrafficTable = () => {
       coverage: '94,543',
       frequency: '1.3',
       viewbillity: '48.281',
-      impression: '99,695',
-      click: '1,566',
-      ct: '1.54',
-      cr: '0.65',
-      cv: '0.013',
-      cc: '0.023',
-      spen: '64.77',
-      coverag: '94,543',
-      frequenc: '1.3',
-      viewbillit: '48.281'
+      videoFirstQuartile: '48.281',
+      videoSecondQuartile: '48.281',
+      videoThirdQuartile: '48.281',
+      videoComplete: '48.281'
     }
   ]
 
@@ -282,35 +228,17 @@ export const TrafficTable = () => {
     columnHelper.accessor('viewbillity', {
       header: 'viewbillity'
     }),
-    columnHelper.accessor('impression', {
-      header: 'impression'
+    columnHelper.accessor('videoFirstQuartile', {
+      header: 'videoFirstQuartile'
     }),
-    columnHelper.accessor('click', {
-      header: 'click'
+    columnHelper.accessor('videoSecondQuartile', {
+      header: 'videoSecondQuartile'
     }),
-    columnHelper.accessor('ct', {
-      header: 'ct'
+    columnHelper.accessor('videoThirdQuartile', {
+      header: 'videoThirdQuartile'
     }),
-    columnHelper.accessor('cr', {
-      header: 'cr'
-    }),
-    columnHelper.accessor('cv', {
-      header: 'cv'
-    }),
-    columnHelper.accessor('cc', {
-      header: 'cc'
-    }),
-    columnHelper.accessor('spen', {
-      header: 'spen'
-    }),
-    columnHelper.accessor('coverag', {
-      header: 'coverag'
-    }),
-    columnHelper.accessor('frequenc', {
-      header: 'frequenc'
-    }),
-    columnHelper.accessor('viewbillit', {
-      header: 'viewbillit'
+    columnHelper.accessor('videoComplete', {
+      header: 'videoComplete'
     })
   ]
 

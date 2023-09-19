@@ -11,34 +11,46 @@
   color: #fff;
   box-sizing: border-box;
   cursor: pointer;
-}
 
-.theme {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-basis: 50%;
-  z-index: 1;
+  &.full-width {
+    width: 100%;
 
-  svg {
-    fill: var(--primary-color);
+    .track {
+      width: 50%;
+
+      &.right {
+        transform: translateX(calc(100% - 8px));
+      }
+    }
   }
-}
 
-.track {
-  position: absolute;
-  top: 4px;
-  width: 52px;
-  height: 28px;
-  border-radius: 32px;
-  background: var(--theme-switcher-item-active-bg-color);
-  box-shadow: var(--theme-switcher-track-box-shadow);
-  transform: translateX(0);
-  transition: transform 0.3s ease;
+  .theme {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+    z-index: 1;
 
-  &.right {
-    left: auto;
-    transform: translateX(56px);
+    svg {
+      fill: var(--primary-color);
+    }
+  }
+
+  .track {
+    position: absolute;
+    top: 4px;
+    width: 52px;
+    height: 28px;
+    border-radius: 32px;
+    background: var(--theme-switcher-item-active-bg-color);
+    box-shadow: var(--theme-switcher-track-box-shadow);
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+
+    &.right {
+      left: auto;
+      transform: translateX(56px);
+    }
   }
 }

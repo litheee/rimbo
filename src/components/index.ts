@@ -23,6 +23,7 @@ import { CompaniesTables } from './CompaniesTables/CompaniesTables'
 import { WhiteListTable } from './WhiteListTable/WhiteListTable'
 import { TargetingTable } from './TargetingTable/TargetingTable'
 import { HeaderAuth } from './HeaderAuth/HeaderAuth'
+import { CreativesTable } from './CreativesTable/CreativesTable'
 
 export {
   App,
@@ -49,5 +50,6 @@ export {
   CompaniesTables,
   WhiteListTable,
   TargetingTable,
-  HeaderAuth
+  HeaderAuth,
+  CreativesTable
 }

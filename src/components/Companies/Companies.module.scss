@@ -6,6 +6,10 @@
   :global {
     .wrapper {
       position: relative;
+
+      @media screen and (max-width: 1315px) {
+        padding: 0 16px;
+      }
     }
   }
 }
@@ -52,6 +56,8 @@
     gap: 4px;
 
     span {
+      position: relative;
+
       &:first-of-type {
         line-height: 20px;
         font-weight: 300;
@@ -62,6 +68,41 @@
         font-size: var(--font-size-lg);
         font-weight: 600;
         color: #fff;
+      }
+    }
+
+    &-arrow {
+      position: absolute;
+      top: 2px;
+      right: -20px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .item {
+      align-items: flex-start;
+
+      &:not(:first-child) {
+        display: none;
+      }
+
+      &-arrow {
+        display: flex;
+      }
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .item {
+      span {
+        &:last-of-type {
+          font-size: var(--font-size-reg);
+        }
       }
     }
   }
@@ -78,5 +119,13 @@
     height: 40px;
     background: linear-gradient(#00a3ff, #7f40c9);
     border-radius: 50%;
+  }
+
+  @media screen and (max-width: 500px) {
+    span {
+      display: inline;
+      width: 30px;
+      height: 30px;
+    }
   }
 }

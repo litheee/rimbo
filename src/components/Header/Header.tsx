@@ -1,11 +1,16 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
 
 import { Logo, ThemeSwitcher, LangSwitcher, UserProfile } from 'components'
 
 import { ROUTE_NAMES, RouteNamesValues } from 'core/router'
 
+import avatarImg from 'assets/img/avatar.png'
 import { ReactComponent as LayersIcon } from 'assets/icons/layers.svg'
 import { ReactComponent as SettingsIcon } from 'assets/icons/settings.svg'
+import { ReactComponent as HamburgerIcon } from 'assets/icons/hamburger.svg'
+import { ReactComponent as CrossIcon } from 'assets/icons/cross.svg'
+import { ReactComponent as LogoutIcon } from 'assets/icons/logout.svg'
 
 import styles from './Header.module.scss'
 
@@ -17,6 +22,7 @@ interface NavItem {
 
 export const Header = () => {
   const { pathname } = useLocation()
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const nav: NavItem[] = [
     { label: 'Overview', href: ROUTE_NAMES.OVERVIEW, icon: <LayersIcon /> },
@@ -37,11 +43,11 @@ export const Header = () => {
   })
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isMobileMenuOpen ? styles['header-fixed'] : ''}`}>
       <div className='wrapper'>
         <Logo />
 
-        <nav>
+        <nav className={styles.nav}>
           <ul>{navItems}</ul>
         </nav>
 
@@ -49,6 +55,48 @@ export const Header = () => {
           <ThemeSwitcher />
           <LangSwitcher />
           <UserProfile />
+        </div>
+
+        <button
+          className={styles['mobile-menu-button']}
+          onClick={() => {
+            setMobileMenuOpen(!isMobileMenuOpen)
+          }}
+        >
+          {!isMobileMenuOpen ? <HamburgerIcon /> : <CrossIcon />}
+        </button>
+
+        <div className={`${styles['mobile-menu']} ${isMobileMenuOpen ? styles['mobile-menu-open'] : ''}`}>
+          <div className={styles.profile}>
+            <div className={styles.avatar}>
+              <img src={avatarImg} alt='avatar' />
+
+              <div className={styles.notifications}>
+                <span>3</span>
+              </div>
+            </div>
+
+            <div className={styles['profile-right']}>
+              <span>Ashfak Sayem</span>
+              <span>ashfaksayem@gmail.com</span>
+            </div>
+          </div>
+
+          <nav className={styles['nav-mobile']}>
+            <ul>
+              {navItems}
+
+              <li>
+                <button>
+                  <LogoutIcon /> <span>Log out</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <div className={styles['theme-switcher-container']}>
+            <ThemeSwitcher fullWidth />
+          </div>
         </div>
       </div>
     </header>

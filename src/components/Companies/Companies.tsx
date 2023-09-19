@@ -3,6 +3,7 @@ import { CompaniesCarousel, Heading } from 'components'
 import styles from './Companies.module.scss'
 
 import { ReactComponent as PlusIcon } from 'assets/icons/plus.svg'
+import { ReactComponent as ArrowDownIcon } from 'assets/icons/arrow-down.svg'
 
 interface CompaniesProps {
   title: string
@@ -25,7 +26,12 @@ export const Companies = ({ title }: CompaniesProps) => {
         <div className={styles['total-row']}>
           <ul className={styles.list}>
             <li className={styles.item}>
-              <span>Total cpm</span>
+              <span>
+                Total cpm
+                <button className={styles['item-arrow']}>
+                  <ArrowDownIcon />
+                </button>
+              </span>
               <span>{totalCPM}</span>
             </li>
 

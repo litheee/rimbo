@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { Swiper as SwiperType } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
+import { Navigation, Controller } from 'swiper/modules'
 
 import { AdvertismentType } from 'components'
 
@@ -64,21 +64,12 @@ const advertisments = [
 ]
 
 export const AdvertismentTypesCarousel = () => {
-  const swiperRef = useRef<SwiperType>()
-  const [carouselIdx, setCarouselIdx] = useState(0)
+  const [swiper, setSwiper] = useState<SwiperType>()
+  const [swiperSnapIdx, setSwiperSnapIdx] = useState(0)
 
-  const isPrevSlideAvailable = carouselIdx >= 1
-  const isNextSlideAvailable = carouselIdx <= advertisments.length - 4
-
-  const onSlidePrev = () => {
-    swiperRef.current?.slidePrev()
-    setCarouselIdx(carouselIdx - 1)
-  }
-
-  const onSlideNext = () => {
-    swiperRef.current?.slideNext()
-    setCarouselIdx(carouselIdx + 1)
-  }
+  const swipesCount = swiper?.snapGrid?.length || 0
+  const isPrevSlideAvailable = swiperSnapIdx !== 0
+  const isNextSlideAvailable = swiperSnapIdx <= swipesCount - 2
 
   return (
     <div className={styles['advertisment-types-carousel']}>
@@ -86,10 +77,16 @@ export const AdvertismentTypesCarousel = () => {
         spaceBetween={24}
         slidesPerView='auto'
         className={styles.carousel}
-        modules={[Navigation]}
-        allowTouchMove={false}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper
+        modules={[Navigation, Controller]}
+        allowTouchMove={true}
+        onSwiper={setSwiper}
+        breakpoints={{
+          1315: {
+            allowTouchMove: false
+          }
+        }}
+        onSlideChange={(swiper) => {
+          setSwiperSnapIdx(swiper.snapIndex)
         }}
       >
         {advertisments.map(({ name, value, growth }) => (
@@ -100,13 +97,23 @@ export const AdvertismentTypesCarousel = () => {
       </Swiper>
 
       {isPrevSlideAvailable ? (
-        <button className={styles['prev-btn']} onClick={onSlidePrev}>
+        <button
+          className={styles['prev-btn']}
+          onClick={() => {
+            swiper?.slidePrev()
+          }}
+        >
           <ArrowRightIcon />
         </button>
       ) : null}
 
       {isNextSlideAvailable ? (
-        <button className={styles['next-btn']} onClick={onSlideNext}>
+        <button
+          className={styles['next-btn']}
+          onClick={() => {
+            swiper?.slideNext()
+          }}
+        >
           <ArrowRightIcon />
         </button>
       ) : null}

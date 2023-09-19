@@ -6,11 +6,15 @@ import { ReactComponent as CrescentIcon } from 'assets/icons/crescent.svg'
 import styles from './ThemeSwitcher.module.scss'
 import { Theme } from 'providers/Theme/Context'
 
-export const ThemeSwitcher = () => {
+interface ThemeSwitcherProps {
+  fullWidth?: boolean
+}
+
+export const ThemeSwitcher = ({ fullWidth }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <div className={styles['theme-switcher']} onClick={toggleTheme}>
+    <div className={`${styles['theme-switcher']} ${fullWidth ? styles['full-width'] : ''}`} onClick={toggleTheme}>
       <div className={styles.theme}>
         <SunIcon />
       </div>
