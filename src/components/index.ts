@@ -24,6 +24,7 @@ import { WhiteListTable } from './WhiteListTable/WhiteListTable'
 import { TargetingTable } from './TargetingTable/TargetingTable'
 import { HeaderAuth } from './HeaderAuth/HeaderAuth'
 import { CreativesTable } from './CreativesTable/CreativesTable'
+import { CitiesTable } from './CitiesTable/CitiesTable'
 
 export {
   App,
@@ -51,5 +52,6 @@ export {
   WhiteListTable,
   TargetingTable,
   HeaderAuth,
-  CreativesTable
+  CreativesTable,
+  CitiesTable
 }

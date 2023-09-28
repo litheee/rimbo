@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Tabs } from 'ui'
-import { Box, TargetingTable, WhiteListTable, CreativesTable } from '..'
+import { Box, TargetingTable, WhiteListTable, CreativesTable, CitiesTable } from '..'
 
 import styles from './CompaniesTables.module.scss'
 
@@ -27,7 +27,7 @@ export const CompaniesTables = () => {
       case 'targeting':
         return <TargetingTable />
       case 'cities':
-        return <WhiteListTable />
+        return <CitiesTable />
       case 'creatives':
         return <CreativesTable />
     }

@@ -17,6 +17,9 @@ export const Pagination = () => {
     pageSize: 1
   })
 
+  const isPrevAvailable = activePage !== 1
+  const isNextAvailable = activePage < pages.length
+
   const toPrevPage = () => {
     if (activePage !== 1) {
       setActivePage(activePage - 1)
@@ -31,8 +34,8 @@ export const Pagination = () => {
 
   return (
     <div className={styles.pagination}>
-      <button className={styles.button} onClick={toPrevPage}>
-        {activePage !== 1 ? <ArrowDownIcon /> : null}
+      <button className={`${styles.button} ${!isPrevAvailable ? styles['button-disabled'] : ''}`} onClick={toPrevPage}>
+        {isPrevAvailable ? <ArrowDownIcon /> : null}
       </button>
 
       {paginationRange?.map((pageNumber) => {
@@ -53,8 +56,8 @@ export const Pagination = () => {
         )
       })}
 
-      <button className={styles.button} onClick={toNextPage}>
-        {activePage < pages.length ? <ArrowDownIcon /> : null}
+      <button className={`${styles.button} ${!isNextAvailable ? styles['button-disabled'] : ''}`} onClick={toNextPage}>
+        {isNextAvailable ? <ArrowDownIcon /> : null}
       </button>
     </div>
   )

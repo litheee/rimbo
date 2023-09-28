@@ -24,6 +24,13 @@
     background: var(--pagination-button-active-bg-color);
   }
 
+  &-disabled {
+    pointer-events: none;
+    cursor: default;
+    visibility: hidden;
+    opacity: 0;
+  }
+
   &:first-of-type {
     svg {
       transform: rotate(90deg);
