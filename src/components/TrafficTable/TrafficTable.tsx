@@ -219,6 +219,9 @@ export const TrafficTable = () => {
     columnHelper.accessor('cpc', {
       header: 'cpc'
     }),
+    columnHelper.accessor('spent', {
+      header: 'spent'
+    }),
     columnHelper.accessor('coverage', {
       header: 'coverage'
     }),

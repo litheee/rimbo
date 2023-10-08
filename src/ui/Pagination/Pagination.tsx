@@ -38,8 +38,13 @@ export const Pagination = () => {
         {isPrevAvailable ? <ArrowDownIcon /> : null}
       </button>
 
-      {paginationRange?.map((pageNumber) => {
-        if (pageNumber === null) return <div className={styles.button}>&#8230;</div>
+      {paginationRange?.map((pageNumber, idx) => {
+        if (pageNumber === 'ellipsis')
+          return (
+            <div key={`ellipsis-${idx}`} className={styles.button}>
+              &#8230;
+            </div>
+          )
 
         const isActive = activePage === pageNumber
 
@@ -48,7 +53,9 @@ export const Pagination = () => {
             key={pageNumber}
             className={`${styles.button} ${isActive ? styles['button-active'] : ''}`}
             onClick={() => {
-              setActivePage(pageNumber)
+              if (typeof pageNumber === 'number') {
+                setActivePage(pageNumber)
+              }
             }}
           >
             {pageNumber}

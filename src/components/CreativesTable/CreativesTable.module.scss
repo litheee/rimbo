@@ -52,18 +52,26 @@
           }
 
           &:nth-of-type(8) {
-            min-width: 146px;
+            min-width: 91px;
           }
 
           &:nth-of-type(9) {
-            min-width: 166px;
+            min-width: 94px;
           }
 
           &:nth-of-type(10) {
-            min-width: 150px;
+            min-width: 146px;
           }
 
           &:nth-of-type(11) {
+            min-width: 166px;
+          }
+
+          &:nth-of-type(12) {
+            min-width: 150px;
+          }
+
+          &:nth-of-type(13) {
             min-width: 120px;
           }
         }
@@ -104,5 +112,101 @@
         }
       }
     }
+  }
+}
+
+.button {
+  position: absolute;
+  right: 112px;
+  top: 29px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--button-border-color);
+  background: var(--button-bg-color);
+  box-sizing: border-box;
+
+  &-columns-active {
+    background: var(--columns-dropdown-active-bg-color);
+    border: 1px solid var(--columns-dropdown-active-border-color);
+  }
+
+  svg path {
+    fill: var(--button-icon-color);
+  }
+
+  @media screen and (max-width: 800px) {
+    right: auto;
+    left: 112px;
+    top: 24px;
+  }
+
+  @media screen and (max-width: 500px) {
+    left: 104px;
+    top: 16px;
+  }
+}
+
+.columns-dropdown {
+  width: 246px;
+  max-height: 599px;
+  margin-top: 8px;
+  padding: 8px 0 8px 8px;
+  border-radius: 8px;
+  background: var(--dropdown-bg-color);
+  box-shadow:
+    0px 0px 40px -8px rgba(0, 0, 0, 0.06),
+    0px 32px 48px -8px rgba(0, 0, 0, 0.04);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--scrollbar-color);
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 10px;
+    gap: 8px;
+    background: transparent;
+    border-radius: 8px;
+    color: var(--primary-color);
+    transition: 0.3s;
+
+    &:hover {
+      background: var(--dropdown-item-hover-bg-color);
+
+      button {
+        background: var(--columns-dropdown-drag-hover-bg-color);
+      }
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      margin-left: auto;
+      border-radius: 8px;
+      background: var(--columns-dropdown-drag-bg-color);
+
+      svg {
+        fill: var(--primary-color);
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-right: -50px;
   }
 }

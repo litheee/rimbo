@@ -1,10 +1,14 @@
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import Popup from 'reactjs-popup'
+import { useState } from 'react'
 
-import { Pagination } from 'ui'
+import { Checkbox, Pagination } from 'ui'
 
 import styles from './CreativesTable.module.scss'
 
 import { ReactComponent as SortIcon } from 'assets/icons/sort.svg'
+import { ReactComponent as ColumnsIcon } from 'assets/icons/columns.svg'
+import { ReactComponent as DragIcon } from 'assets/icons/drag.svg'
 
 interface DataItem {
   name: string
@@ -14,6 +18,8 @@ interface DataItem {
   impressions: string
   clicks: string
   ctr: string
+  coverage: string
+  frequency: string
   videoFirstQuartile: string
   videoSecondQuartile: string
   videoThirdQuartile: string
@@ -21,6 +27,8 @@ interface DataItem {
 }
 
 export const CreativesTable = () => {
+  const [isColumnsPopupOpen, setColumnsPopupOpen] = useState(false)
+
   const data: DataItem[] = [
     {
       name: '250х250 kz',
@@ -30,6 +38,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -43,6 +53,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -56,6 +68,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -69,6 +83,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -82,6 +98,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -95,6 +113,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -108,6 +128,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -121,6 +143,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -134,6 +158,8 @@ export const CreativesTable = () => {
       impressions: '0.032',
       clicks: '1,566',
       ctr: '0.032',
+      coverage: '94,543',
+      frequency: '1.3',
       videoFirstQuartile: '48.281',
       videoSecondQuartile: '48.281',
       videoThirdQuartile: '48.281',
@@ -165,6 +191,12 @@ export const CreativesTable = () => {
     columnHelper.accessor('ctr', {
       header: 'ctr'
     }),
+    columnHelper.accessor('coverage', {
+      header: 'coverage'
+    }),
+    columnHelper.accessor('frequency', {
+      header: 'frequency'
+    }),
     columnHelper.accessor('videoFirstQuartile', {
       header: 'videoFirstQuartile'
     }),
@@ -179,6 +211,8 @@ export const CreativesTable = () => {
     })
   ]
 
+  const columnsNames = Object.keys(data[0])
+
   const table = useReactTable({
     data,
     columns,
@@ -187,6 +221,45 @@ export const CreativesTable = () => {
 
   return (
     <div className={styles['creatives-table']}>
+      <Popup
+        open={isColumnsPopupOpen}
+        position='bottom right'
+        arrow={false}
+        offsetY={0}
+        offsetX={0}
+        onOpen={() => {
+          setColumnsPopupOpen(true)
+        }}
+        onClose={() => {
+          setColumnsPopupOpen(false)
+        }}
+        trigger={
+          <button className={`${styles.button} ${isColumnsPopupOpen ? styles['button-columns-active'] : ''}`}>
+            Columns <ColumnsIcon />
+          </button>
+        }
+      >
+        <div className={styles['columns-dropdown']}>
+          <form>
+            <ul>
+              {columnsNames.map((name) => {
+                return (
+                  <li key={name}>
+                    <Checkbox name={name} />
+
+                    <span>{name}</span>
+
+                    <button type='button'>
+                      <DragIcon />
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
+          </form>
+        </div>
+      </Popup>
+
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (

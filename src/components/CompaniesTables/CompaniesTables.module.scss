@@ -3,6 +3,7 @@
 
   :global {
     .box {
+      position: relative;
       padding: 24px 24px 8px;
     }
   }
@@ -50,7 +51,7 @@
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     flex-direction: column-reverse;
     align-items: flex-start;
     gap: 10px;
@@ -74,6 +75,15 @@
   padding-bottom: 48px;
   overflow-x: auto;
 
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--scrollbar-color);
+  }
+
   & > div > div:last-of-type {
     position: absolute;
     left: 50%;
@@ -89,6 +99,7 @@
   border-radius: 8px;
   border: 1px solid var(--button-border-color);
   background: var(--button-bg-color);
+  line-height: 20px;
 
   svg path {
     stroke: var(--button-icon-color);

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Tabs } from 'ui'
-import { Box, TargetingTable, WhiteListTable, CreativesTable, CitiesTable } from '..'
+import { Box, TargetingTable, WhiteListTable, CreativesTable, CitiesTable, PlacementTable } from '..'
 
 import styles from './CompaniesTables.module.scss'
 
@@ -9,6 +9,7 @@ import { ReactComponent as ArrowDownIcon } from 'assets/icons/arrow-down.svg'
 
 export const CompaniesTables = () => {
   const tabs = [
+    { label: 'Placement', value: 'placement' },
     { label: 'White list', value: 'white-list' },
     { label: 'Black list', value: 'black-list' },
     { label: 'Targeting', value: 'targeting' },
@@ -20,6 +21,8 @@ export const CompaniesTables = () => {
 
   const getTabContent = (value: string) => {
     switch (value) {
+      case 'placement':
+        return <PlacementTable />
       case 'white-list':
         return <WhiteListTable />
       case 'black-list':

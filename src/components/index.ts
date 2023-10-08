@@ -25,6 +25,7 @@ import { TargetingTable } from './TargetingTable/TargetingTable'
 import { HeaderAuth } from './HeaderAuth/HeaderAuth'
 import { CreativesTable } from './CreativesTable/CreativesTable'
 import { CitiesTable } from './CitiesTable/CitiesTable'
+import { PlacementTable } from './PlacementTable/PlacementTable'
 
 export {
   App,
@@ -53,5 +54,6 @@ export {
   TargetingTable,
   HeaderAuth,
   CreativesTable,
-  CitiesTable
+  CitiesTable,
+  PlacementTable
 }

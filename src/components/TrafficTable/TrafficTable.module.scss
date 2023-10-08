@@ -109,25 +109,12 @@
   box-sizing: border-box;
 
   &::-webkit-scrollbar {
-    width: 14px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-top: 8px solid var(--columns-dropdown-scroll-border-color);
-    border-bottom: 8px solid var(--columns-dropdown-scroll-border-color);
-    border-right: 8px solid var(--columns-dropdown-scroll-border-color);
-    background-clip: padding-box;
-    background: var(--columns-dropdown-scroll-color);
-  }
-
-  &::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-    display: none;
-  }
-
-  &::-webkit-scrollbar-corner {
-    background-color: transparent;
+    border-radius: 10px;
+    background: var(--scrollbar-color);
   }
 
   li {
@@ -172,26 +159,16 @@
 .table {
   width: 100%;
   margin-top: 16px;
+  padding-bottom: 9px;
   overflow-x: scroll;
 
   &::-webkit-scrollbar {
-    height: 15px;
+    height: 6px;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-top: 9px solid var(--scrollbar-border-color);
-    background-clip: padding-box;
+    border-radius: 10px;
     background: var(--scrollbar-color);
-  }
-
-  &::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-    display: none;
-  }
-
-  &::-webkit-scrollbar-corner {
-    background-color: transparent;
   }
 
   table {
@@ -241,28 +218,29 @@
           &:nth-of-type(6),
           &:nth-of-type(7),
           &:nth-of-type(8),
-          &:nth-of-type(9) {
+          &:nth-of-type(9),
+          &:nth-of-type(10) {
             min-width: 91px;
           }
 
-          &:nth-of-type(10),
-          &:nth-of-type(11) {
+          &:nth-of-type(11),
+          &:nth-of-type(12) {
             min-width: 94px;
           }
 
-          &:nth-of-type(12) {
+          &:nth-of-type(13) {
             min-width: 146px;
           }
 
-          &:nth-of-type(13) {
+          &:nth-of-type(14) {
             min-width: 166px;
           }
 
-          &:nth-of-type(14) {
+          &:nth-of-type(15) {
             min-width: 150px;
           }
 
-          &:nth-of-type(15) {
+          &:nth-of-type(16) {
             min-width: 120px;
           }
         }

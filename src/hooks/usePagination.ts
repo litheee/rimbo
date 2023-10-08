@@ -54,7 +54,7 @@ export const usePagination = ({ totalCount, pageSize, siblingCount = 1, currentP
       const leftItemCount = 3 + 2 * siblingCount
       const leftRange = range(1, leftItemCount)
 
-      return [...leftRange, null, totalPageCount]
+      return [...leftRange, 'ellipsis', totalPageCount]
     }
 
     /*
@@ -63,7 +63,7 @@ export const usePagination = ({ totalCount, pageSize, siblingCount = 1, currentP
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount
       const rightRange = range(totalPageCount - rightItemCount + 1, totalPageCount)
-      return [firstPageIndex, null, ...rightRange]
+      return [firstPageIndex, 'ellipsis', ...rightRange]
     }
 
     /*
@@ -71,7 +71,7 @@ export const usePagination = ({ totalCount, pageSize, siblingCount = 1, currentP
     */
     if (shouldShowLeftDots && shouldShowRightDots) {
       const middleRange = range(leftSiblingIndex, rightSiblingIndex)
-      return [firstPageIndex, null, ...middleRange, null, lastPageIndex]
+      return [firstPageIndex, 'ellipsis', ...middleRange, 'ellipsis', lastPageIndex]
     }
   }, [totalCount, pageSize, siblingCount, currentPage])
 
